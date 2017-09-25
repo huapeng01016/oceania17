@@ -19,7 +19,7 @@ function drawRegionsMap() {
 <<dd_do: nocommands>>
 qui desc
 forval i=1/`r(N)' {
-  local a =  country[`i']
+  local a =  wbcode[`i']
   local a = "'"+"`a'"+"'"
   local b = pop95[`i']
   di "[`a', `b'],"
@@ -34,8 +34,5 @@ forval i=1/`r(N)' {
 </script>
 </head>
 </html>
-
-Use Google chart library and Stata dyndoc together
-==================================================
 
 <div id="regions_div" style="width: 900px; height: 500px;"></div>

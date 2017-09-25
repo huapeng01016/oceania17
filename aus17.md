@@ -90,6 +90,82 @@ scatter weight displacement, mcolor(%30)
 ##
 #### <<dd_graph:replace>>
 
+# ".do files on steroids"
+
+- macros work the same as in do-file
+- accept arguments
+
+# Use arguments in **dyndoc**
+Produce a set of different HTML pages from one [dynamic document](./auto_78.txt) with different arguments  
+
+<<dd_do:quietly>>
+use auto_78_img.dta, clear
+desc
+cap mkdir cars
+<</dd_do>>
+
+<<dd_do:nocommand>>
+forval i=1/`r(N)' {
+  di "- [" make[`i'] "](./cars/" make[`i'] ".html)"
+}
+<</dd_do>>
+
+<<dd_remove>>
+<<dd_do>>
+forval i=1/`r(N)' {
+  dyndoc auto_78.txt `=make[`i']', saving("cars/`=make[`i']'.html") replace
+}
+<</dd_do>>
+<</dd_remove>>
+
+# Code for the previous page
+~~~
+<<dd_ignore>>
+<<dd_do:quietly>>
+use auto_78_img.dta, clear
+desc
+cap mkdir cars
+<</dd_do>>
+
+<<dd_do:nocommand>>
+forval i=1/`r(N)' {
+  di "- [" make[`i'] "](./cars/" make[`i'] ".html)"
+}
+<</dd_do>>
+
+// need use dd_remove
+<<dd_do>>
+forval i=1/`r(N)' {
+  dyndoc auto_78.txt `=make[`i']', saving("cars/`=make[`i']'.html") replace
+}
+<</dd_do>>
+// need use dd_remove
+
+<</dd_ignore>>
+~~~
+
+# dyntext
+Process dynamic tags in any text files, for example, LaTeX and JavaScript  
+
+# JavaScript
+
+- An [example](./gchart.html) is using Google Chart library and the [dynamic document](./gchart.txt)
+
+<<dd_remove>>
+<<dd_do>>
+dyntext gchart.txt, sav(gchart.html) replace
+<</dd_do>>
+<</dd_remove>>
+
+~~~~
+dyntext gchart.txt, sav(gchart.html) replace
+~~~~
+
+# Use pandoc instead of Stata's markdown
+
+- Produce reveal.js [slildes deck](./aus17.md) with [**dynpandoc**](./maker.do)
+- Produce [.docx document](./auto.docx) with [**dynpandoc**](./makeauto.do)
+
 
 # putdocx
 
@@ -106,35 +182,6 @@ Produce [markdown tables](./table.html) from [commands](./table.md), including
 - **table**
 - **estimates table**
 
-# dyntext
-Process dynamic tags in any text files, for example, LaTeX and JavaScript  
-
-# LaTeX file
-
-Produce a [.pdf file](./extex.pdf) from a [LaTex file with dynamic tags](./extex.md) with dynamic tags  
-
-- use **sjlog**
-- use **pdflatex** on the output of **dyntext**
-
-# JavaScript
-
-- One [example](./gchart.html) is using Google Chart library and the [dynamic document](./gchart.txt)
-- Another [example](./gchart1.txt) is dynamically generating web pages based on arguments  
-
-# Use pandoc instead of Stata's markdown
-
-Produce reveal.js [slildes deck](./aus17.md) with [**dynpandoc**](./dynpandoc.ado)
-
-# putpdf
-
-Produce a [.pdf document](./expdf.pdf) from a [do-file](./expdf.do)
-
-# TODO
-
-- cached code block
-- better LaTeX support
-
 # THE END
-
 
 [hpeng]: hpeng@stata.com

@@ -20,21 +20,21 @@ var data = google.visualization.arrayToDataTable([
 qui desc
 forval i=1/`r(N)' {
   local a = mpg[`i']
-  local b = price[`i']	
+  local b = price[`i']
   di "[`a', `b'],"
-}	
-<</dd_do>>	  
+}
+<</dd_do>>
 ]);
 
 var options = {
   title: 'MPG vs. Price comparison',
 <<dd_do: qui>>
 summ mpg
-<</dd_do>>	  
+<</dd_do>>
   hAxis: {title: 'MPG', minValue: 0, maxValue: 50},
 <<dd_do: qui>>
 summ price
-<</dd_do>>	  
+<</dd_do>>
   vAxis: {title: 'Price', minValue: 2000, maxValue: 20000},
   legend: 'none'
 };
@@ -47,8 +47,4 @@ chart.draw(data, options);
 </head>
 </html>
 
-Use Google chart library and Stata dyndoc
-=========================================
-
 <div id="chart_div" style="width: 900px; height: 500px;"></div>
-

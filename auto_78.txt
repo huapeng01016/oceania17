@@ -1,0 +1,25 @@
+<<dd_include: stheader.txt>>
+
+<<dd_do: quietly>>
+syntax anything(name=car)
+<</dd_do>>
+
+<<dd_display: "1978 `car' information">>
+=========================================
+
+<<dd_do: quietly>>
+use auto_78_img, clear
+preserve
+keep if make == "`car'"
+local name = subinstr("images/"+make[1]+".jpg", " ", "_", .)
+gen res = filewrite("`name'", image, 1)
+<</dd_do>>
+
+- Price : $<<dd_display: price[1]>>
+- Mile per gallon: <<dd_display: mpg[1]>>
+
+<img src="<<dd_display:"../`name'">>" width="500" />
+
+<<dd_do: quietly>>
+restore
+<</dd_do>>

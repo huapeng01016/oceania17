@@ -139,9 +139,69 @@ scatter weight displacement, mcolor(%30)
 <section id="section-2" class="level2">
 <h2></h2>
 <section id="section-3" class="level4">
-<h4><img src="Graph2.svg" ></h4>
+<h4><img src="Graph12.svg" ></h4>
 </section>
 </section>
+</section>
+<section id="do-files-on-steroids" class="slide level1">
+<h1>&quot;.do files on steroids&quot;</h1>
+<ul>
+<li>macros work the same as in do-file</li>
+<li>accept arguments</li>
+</ul>
+</section>
+<section id="use-arguments-in-dyndoc" class="slide level1">
+<h1>Use arguments in <strong>dyndoc</strong></h1>
+<p>Produce a set of different HTML pages from one <a href="./auto_78.txt">dynamic document</a> with different arguments</p>
+<ul>
+<li><a href="./cars/AMC%20Concord.html">AMC Concord</a></li>
+<li><a href="./cars/BMW%20320i.html">BMW 320i</a></li>
+<li><a href="./cars/Buick%20Riviera.html">Buick Riviera</a></li>
+<li><a href="./cars/Ford%20Mustang.html">Ford Mustang</a></li>
+<li><a href="./cars/Honda%20Accord.html">Honda Accord</a></li>
+<li><a href="./cars/Toyota%20Celica.html">Toyota Celica</a></li>
+</ul>
+</section>
+<section id="code-for-the-previous-page" class="slide level1">
+<h1>Code for the previous page</h1>
+<pre><code>&lt;&lt;dd_do:quietly&gt;&gt;
+use auto_78_img.dta, clear
+desc
+cap mkdir cars
+&lt;&lt;/dd_do&gt;&gt;
+
+&lt;&lt;dd_do:nocommand&gt;&gt;
+forval i=1/`r(N)&#39; {
+  di &quot;- [&quot; make[`i&#39;] &quot;](./cars/&quot; make[`i&#39;] &quot;.html)&quot;
+}
+&lt;&lt;/dd_do&gt;&gt;
+
+// need use dd_remove
+&lt;&lt;dd_do&gt;&gt;
+forval i=1/`r(N)&#39; {
+  dyndoc auto_78.txt `=make[`i&#39;]&#39;, saving(&quot;cars/`=make[`i&#39;]&#39;.html&quot;) replace
+}
+&lt;&lt;/dd_do&gt;&gt;
+// need use dd_remove
+</code></pre>
+</section>
+<section id="dyntext" class="slide level1">
+<h1>dyntext</h1>
+<p>Process dynamic tags in any text files, for example, LaTeX and JavaScript</p>
+</section>
+<section id="javascript" class="slide level1">
+<h1>JavaScript</h1>
+<ul>
+<li>An <a href="./gchart.html">example</a> is using Google Chart library and the <a href="./gchart.txt">dynamic document</a></li>
+</ul>
+<pre><code>dyntext gchart.txt, sav(gchart.html) replace</code></pre>
+</section>
+<section id="use-pandoc-instead-of-statas-markdown" class="slide level1">
+<h1>Use pandoc instead of Stata's markdown</h1>
+<ul>
+<li>Produce reveal.js <a href="./aus17.md">slildes deck</a> with <a href="./maker.do"><strong>dynpandoc</strong></a></li>
+<li>Produce <a href="./auto.docx">.docx document</a> with <a href="./makeauto.do"><strong>dynpandoc</strong></a></li>
+</ul>
 </section>
 <section id="putdocx" class="slide level1">
 <h1>putdocx</h1>
@@ -158,40 +218,6 @@ scatter weight displacement, mcolor(%30)
 <li>all estimation commands using <strong>_coef_table</strong></li>
 <li><strong>table</strong></li>
 <li><strong>estimates table</strong></li>
-</ul>
-</section>
-<section id="dyntext" class="slide level1">
-<h1>dyntext</h1>
-<p>Process dynamic tags in any text files, for example, LaTeX and JavaScript</p>
-</section>
-<section id="latex-file" class="slide level1">
-<h1>LaTeX file</h1>
-<p>Produce a <a href="./extex.pdf">.pdf file</a> from a <a href="./extex.md">LaTex file with dynamic tags</a> with dynamic tags</p>
-<ul>
-<li>use <strong>sjlog</strong></li>
-<li>use <strong>pdflatex</strong> on the output of <strong>dyntext</strong></li>
-</ul>
-</section>
-<section id="javascript" class="slide level1">
-<h1>JavaScript</h1>
-<ul>
-<li>One <a href="./gchart.html">example</a> is using Google Chart library and the <a href="./gchart.txt">dynamic document</a></li>
-<li>Another <a href="./gchart1.txt">example</a> is dynamically generating web pages based on arguments</li>
-</ul>
-</section>
-<section id="use-pandoc-instead-of-statas-markdown" class="slide level1">
-<h1>Use pandoc instead of Stata's markdown</h1>
-<p>Produce reveal.js <a href="./aus17.md">slildes deck</a> with <a href="./dynpandoc.ado"><strong>dynpandoc</strong></a></p>
-</section>
-<section id="putpdf" class="slide level1">
-<h1>putpdf</h1>
-<p>Produce a <a href="./expdf.pdf">.pdf document</a> from a <a href="./expdf.do">do-file</a></p>
-</section>
-<section id="todo" class="slide level1">
-<h1>TODO</h1>
-<ul>
-<li>cached code block</li>
-<li>better LaTeX support</li>
 </ul>
 </section>
 <section id="the-end" class="slide level1">

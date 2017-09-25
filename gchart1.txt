@@ -27,22 +27,22 @@ var data = google.visualization.arrayToDataTable([
 <<dd_do: nocommands>>
 forval i=1/`nobs' {
   local a = `var2'[`i']
-  local b = `var1'[`i']	
+  local b = `var1'[`i']
   di "[`a', `b'],"
-}	
-<</dd_do>>	  
+}
+<</dd_do>>
 ]);
 
 var options = {
   title: '<<dd_display:"`var1'">> vs. <<dd_display:"`var2'">> comparison',
 <<dd_do: qui>>
 summ `var2'
-<</dd_do>>	  
+<</dd_do>>
   hAxis: {title: '<<dd_display:"`var2'">>', minValue: <<dd_display:r(min)>>, maxValue: <<dd_display:r(max)>>},
 
 <<dd_do: qui>>
 summ `var1'
-<</dd_do>>	  
+<</dd_do>>
   vAxis: {title: '<<dd_display:"`var1'">>', minValue: <<dd_display:r(min)>>, maxValue: <<dd_display:r(max)>>},
   legend: 'none'
 };
@@ -55,8 +55,6 @@ chart.draw(data, options);
 </head>
 </html>
 
-Use Google chart library and Stata dyndoc together
-==================================================
 
 <div id="chart_div" style="width: 900px; height: 500px;"></div>
 

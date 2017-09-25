@@ -69,7 +69,7 @@ c.percentile |   .3615247   .0741706     4.87   0.000      .216153    .5068965
 
 </code></pre>
 <p>Using the results from my probit model, I can estimate the average change in the probability of being married as the interacted variables <strong>divorces</strong> and <strong>education</strong> both change. To get the effect I want, I type</p>
-<pre><code>. margins divorces, dydx(education) pwcompare 
+<pre><code>. margins divorces, dydx(education) pwcompare
 </code></pre>
 <p>The <strong>dydx(education)</strong> option computes the average marginal effect of education on the probability of divorce, while the <strong>divorces</strong> statement after <strong>margins</strong> paired with the <strong>pwcompare</strong> option computes the discrete differences between the levels of divorce. Stata reports</p>
 <pre><code>
@@ -92,7 +92,7 @@ education    |
 
 
 </code></pre>
-<p>The average marginal effect of education is 0.060 higher when everyone is divorced two times instead of everyone being divorced zero times. The difference in the average marginal effect of education when everyone is divorced one time versus when everyone is divorced zero times is 0.014. This difference is not significantly different from 0. The same is true when everyone is divorced two times instead of everyone being divorced one time. <del>??</del></p>
+<p>The average marginal effect of education is 0.060 higher when everyone is divorced two times instead of everyone being divorced zero times. The difference in the average marginal effect of education when everyone is divorced one time versus when everyone is divorced zero times is 0.014. This difference is not significantly different from 0. The same is true when everyone is divorced two times instead of everyone being divorced one time.</p>
 <p>What I did above was to change both <strong>education</strong> and <strong>pdivorce</strong> simultaneously. In other words, to get the interaction effect, I computed a cross or double derivative (technically, for the discrete variable, I do not have a derivative but a difference with respect to the base level for the discrete variables).</p>
 <p>This way of tackling the problem is unconventional. What is usually done is to compute the derivative with respect to the continuous variable, evaluate it at different values of the discrete covariate, and graph the effects. If we do this, we get</p>
 <pre><code>. margins, dydx(education) at(divorces==0) at(divorces==1) at(divorces==2)
@@ -121,7 +121,7 @@ education    |
 ------------------------------------------------------------------------------
 
 </code></pre>
-<img src="test.png" height="400" > 
+<img src="test.png" height="400" >
 <p>To get the effects from the previous example, I only need to take the differences between the different effects. For instance, the first interaction effect is the difference of the first and second margins, 0.026-0.013 = 0.014.</p>
 <h2><a href="#what-have-we-learned" id="what-have-we-learned">What have we learned?</a></h2>
 <p>We can use margins and factor-variable notation to estimate and graph interaction effects. In the example above, I computed an interaction effect between a continuous and a discrete covariate, but I can also use margins to compute interaction effects between two continuous or two discrete covariates, as is shown in <a href="http://blog.stata.com/2016/07/12/effects-for-nonlinear-models-with-interactions-of-discrete-and-continuous-variables-estimating-graphing-and-interpreting/">this blog article</a>.</p>
