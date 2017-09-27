@@ -196,9 +196,10 @@ dyntext gchart.txt, sav(gchart.html) replace
 
 # Use pandoc instead of Stata's markdown
 
-- Produce reveal.js [slildes deck](./aus17.md) with [**dynpandoc**](./maker.do)
-- Produce [.docx document](./auto.docx) with [**dynpandoc**](./makeauto.do)
-
+- Produce reveal.js [slildes deck](./aus17.md) with [a do-file](./maker.do)
+- Produce [.docx document](./auto.docx) with [a do-file](./makeauto.do)
+- Both do-files use [**dynpandoc**](./dynpandoc.ado)
+- **dynpandoc** uses [**pandocmarkdown**](./pandocmarkdown.ado) instead of Stata's markdown  
 
 # putdocx
 

@@ -231,8 +231,10 @@ forval i=1/`r(N)&#39; {
 <section id="use-pandoc-instead-of-statas-markdown" class="slide level1">
 <h1>Use pandoc instead of Stata's markdown</h1>
 <ul>
-<li>Produce reveal.js <a href="./aus17.md">slildes deck</a> with <a href="./maker.do"><strong>dynpandoc</strong></a></li>
-<li>Produce <a href="./auto.docx">.docx document</a> with <a href="./makeauto.do"><strong>dynpandoc</strong></a></li>
+<li>Produce reveal.js <a href="./aus17.md">slildes deck</a> with <a href="./maker.do">a do-file</a></li>
+<li>Produce <a href="./auto.docx">.docx document</a> with <a href="./makeauto.do">a do-file</a></li>
+<li>Both do-files use <a href="./dynpandoc.ado"><strong>dynpandoc</strong></a></li>
+<li><strong>dynpandoc</strong> uses <a href="./pandocmarkdown.ado"><strong>pandocmarkdown</strong></a> instead of Stata's markdown</li>
 </ul>
 </section>
 <section id="putdocx" class="slide level1">
