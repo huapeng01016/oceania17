@@ -143,6 +143,38 @@ scatter weight displacement, mcolor(%30)
 </section>
 </section>
 </section>
+<section id="more-dynamic-tags" class="slide level1">
+<h1>More dynamic tags</h1>
+<section id="display-contents-based-on-condition" class="level2">
+<h2>Display contents based on condition</h2>
+<pre><code>&lt;&lt;dd_skip_if: (&quot;`talkplace&#39;&quot; == &quot;Oceania&quot;)&gt;&gt;
+&gt; The past was alterable. The past never had been altered.
+&lt;&lt;dd_skip_else&gt;&gt;
+&gt; Oceania was at war with Eastasia. Oceania had always been at war with Eastasia.
+&lt;&lt;dd_skip_end&gt;&gt;</code></pre>
+</section>
+<section id="section-4" class="level2">
+<h2></h2>
+<blockquote>
+<p>Oceania was at war with Eastasia. Oceania had always been at war with Eastasia.</p>
+</blockquote>
+</section>
+<section id="include-a-text-file" class="level2">
+<h2>Include a text file</h2>
+<p>The <a href="subsection1.txt">text file</a> might be the result of a <a href="subsection1.md">dynamic file</a>.</p>
+<pre><code>&lt;&lt;dd_include: subsection1.txt &gt;&gt;</code></pre>
+</section>
+<section id="section-5" class="level2">
+<h2></h2>
+<p>Make a dataset containing means and variances of 100-observation samples from a lognormal distribution. Perform the experiment 10,000 times, then summarize the result:</p>
+<pre><code>
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+        mean |     10,000    1.648681    .2178435   1.038739   3.246317
+         var |     10,000    4.714419    4.978809   .8448562   206.9827
+</code></pre>
+</section>
+</section>
 <section id="do-files-on-steroids" class="slide level1">
 <h1>&quot;.do files on steroids&quot;</h1>
 <ul>

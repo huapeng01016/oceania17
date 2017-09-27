@@ -1,7 +1,11 @@
 # Incorporating Stata into reproducible documents
 
+<<dd_do: quietly>>
+local talkplace "Oceania"
+<</dd_do>>
+
 ##  [Hua Peng@StataCorp][hpeng]
-### 2017 Oceania Stata Users Group meeting
+### 2017 <<dd_display:"`talkplace'">> Stata Users Group meeting
 
 
 # Why reproducible documents?
@@ -59,7 +63,6 @@ matrix define eb = e(b)
 matrix define eb = e(b)
 <</dd_do>>
 
-
 ## dd_display for inline Stata results
 <<dd_ignore>>
 - For every unit increase in displacement, a <<dd_display:%9.4f eb[1,1]>> unit
@@ -88,7 +91,37 @@ scatter weight displacement, mcolor(%30)
 ````
 
 ##
-#### <<dd_graph:replace>>
+#### <<dd_graph: sav(Graph.svg) replace>>
+
+# More dynamic tags
+
+## Display contents based on condition
+````
+<<dd_ignore>>
+<<dd_skip_if: ("`talkplace'" == "Oceania")>>
+> The past was alterable. The past never had been altered.
+<<dd_skip_else>>
+> Oceania was at war with Eastasia. Oceania had always been at war with Eastasia.
+<<dd_skip_end>>
+<</dd_ignore>>
+````
+
+##
+<<dd_skip_if: ("`talkplace'" == "Oceania")>>
+> The past was alterable. The past never had been altered.
+<<dd_skip_else>>
+> Oceania was at war with Eastasia. Oceania had always been at war with Eastasia.
+<<dd_skip_end>>
+
+## Include a text file
+The [text file](subsection1.txt) might be the result of a [dynamic file](subsection1.md).
+````
+<<dd_ignore>>
+<<dd_include: subsection1.txt >>
+<</dd_ignore>>
+````
+##
+<<dd_include: subsection1.txt>>
 
 # ".do files on steroids"
 

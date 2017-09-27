@@ -1,0 +1,13 @@
+
+Make a dataset containing means and variances of 100-observation samples
+from a lognormal distribution.  Perform the experiment 10,000 times, then
+summarize the result:
+
+~~~~
+
+    Variable |        Obs        Mean    Std. Dev.       Min        Max
+-------------+---------------------------------------------------------
+        mean |     10,000    1.648681    .2178435   1.038739   3.246317
+         var |     10,000    4.714419    4.978809   .8448562   206.9827
+
+~~~~
