@@ -6,7 +6,7 @@ local talkplace "Oceania"
 
 ##  [Hua Peng@StataCorp][hpeng]
 ### 2017 <<dd_display:"`talkplace'">> Stata Users Group meeting
-
+### [https://huapeng01016.github.io/oceania17/](https://huapeng01016.github.io/oceania17/)
 
 # Why reproducible documents?
 
