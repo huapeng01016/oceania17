@@ -196,6 +196,7 @@ scatter weight displacement, mcolor(%30)
 <li><a href="./cars/Honda%20Accord.html">Honda Accord</a></li>
 <li><a href="./cars/Toyota%20Celica.html">Toyota Celica</a></li>
 </ul>
+<p>The dataset is at <a href="./auto_78_img.dta">auto_78_img.dta</a>.</p>
 </section>
 <section id="code-for-the-previous-page" class="slide level1">
 <h1>Code for the previous page</h1>
@@ -273,6 +274,7 @@ forval i=1/`r(N)&#39; {
     progress: true,
     history: true,
     center: false,
+    slideNumber: true,
 
   // available themes are in /css/theme
       theme: Reveal.getQueryHash().theme || 'stata', 

@@ -151,6 +151,8 @@ forval i=1/`r(N)' {
 <</dd_do>>
 <</dd_remove>>
 
+The dataset is at [auto_78_img.dta](./auto_78_img.dta).
+
 # Code for the previous page
 ~~~
 <<dd_ignore>>
